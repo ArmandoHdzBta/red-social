@@ -1,7 +1,7 @@
 <?php
 //ser requiere al archivo del usuario
 require 'app/models/Usuario.php';
-
+//se usa la clase
 use Model\Usuario;
 
 class UsuarioController

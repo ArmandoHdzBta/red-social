@@ -16,7 +16,7 @@
 		</ul>
 		<!-- CONTENIDO FORMULARIOS TAB -->
 		<div class="content-tab-form">
-			<div id="iniciarSesion">
+			<div id="iniciarSesion" class="iniciarSesion">
 				<h1>Iniciar sesion</h1>
 				<form action="">
 					<div class="form-group">
@@ -27,9 +27,9 @@
 						<label for="">Contraseña <span class="req">*</span></label>
 						<input type="password" required="">
 					</div>
-					<p class="forgot-password"><a href="#">¿Se te olvido tu contraeña?</a></p>
 					<input type="submit" class="btn-succes" value="Iniciar sesion">
 				</form>
+				<p class="forgot-password"><a href="#">¿Se te olvido tu contraeña?</a></p>
 			</div>
 			<div id="registrarse">
 				<h1>Registrarse</h1>

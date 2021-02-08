@@ -4,7 +4,9 @@
 }
 
 body{
-	background: #F3F3F3;
+	background: #1c1c1c;
+	color: #f0f0f0;
+	/*background: #F3F3F3;*/
 }
 
 .error-box{
@@ -29,37 +31,70 @@ body{
 
 .content{
 	width: 70%;
+	border: 2px solid #f0f0f0;
 	margin: auto;
 	margin-top: 5%;
 	padding: 5px;
-	background: red;
-	box-shadow: 0 4px 10px 4px rgba(#000 .3);
+	box-shadow: 0 15px 30px 40px rgba(#FFF 1.0);
 }
 
-ul, ol{
-	display: block;
+.content-tabs{
+	display: flex;
+	justify-content: space-around;
 	width: 50%;
 	margin: auto;
 	list-style: none;
-	padding: 5px;
-	background: black;
-}
-
-li{
-	display: inline-block;
 	text-align: center;
-	background: pink;
 }
 
-a{
-	display: inline-block;
+.content-tabs li a{
+	width: 20%;
+	padding: 10px 30px;
+	font-size: 25px;
+	font-weight: bold;
 	margin-left: 5px;
-	padding: 10px;
-	background: red;
 	text-decoration: none;
 	color: #282DFF;
 }
 
-input{
+/*a{
+	display: block;
+	width: auto;
+	margin-left: 5px;
+	text-align: right;
+	padding: 10px;
+	background: red;
+	text-decoration: none;
+	color: #282DFF;
+}*/
+
+.content-tab-form{
+	text-align: center;
+}
+
+
+.iniciarSesion p a{
+	display: inline-block;
+	text-decoration: none;
+	color: #282DFF;
+	margin-bottom: 15px;
+}
+
+.form-group{
+	display: block;
 	width: 100%;
+	padding: 5px;
+	margin-bottom: 8px;
+}
+
+.form-group label{
+	display: inline-block;
+	width: 18%;
+	text-align: left;
+	font-size: 18px;
+}
+
+input{
+	outline: none;
+	outline: 2px solid #00035b;
 }
