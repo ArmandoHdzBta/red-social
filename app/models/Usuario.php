@@ -4,7 +4,7 @@ namespace Model;
 
 class Usuario extends Conexion
 {
-	//se declaran los atributos dl usuario
+	//se declaran los atributos del usuario
 	public $nombre;
 	public $apellidoPaterno;
 	public $apellidoMaterno;
@@ -22,9 +22,13 @@ class Usuario extends Conexion
 	//funcion para hacer el registro en la base de datos
 	public function create()
 	{
+		//sentencia sql y se declaran los parametros
 		$sql = "INSERT INTO usuario(nombre,apellido_paterno,apellido_materno,usuario,correo,contrasennia) VALUES (?,?,?,?,?,?)";
+		//se prepara la consulta
 		$pre = mysqli_prepare($this->con,$sql);
+		//ponemos los tipos de dato (s=string(varchar)) y se pasan los parametros como se pusieron en la consulta
 		$pre->bind_param('ssssss',$this->nombre,$this->apellidoPaterno,$this->apellidoMaterno,$this->usuario,$this->correo,$this->contrasennia);
+		//ejecutamos la consulta
 		$pre->execute();
 	}
 	//funcion para el login del usuario en la base de datos
