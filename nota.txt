@@ -1,0 +1,8 @@
+hacer los cambios
+master->master->update
+
+* subir
+master->master->show diff with working tree
+poner un mensaje de comit
+comit
+master->master->push
