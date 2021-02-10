@@ -10,6 +10,5 @@ class DireccionController
 	{
 		require 'app/views/index.php';
 		#holiiii XD
-		#salio hehe
 	}
 }
