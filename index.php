@@ -18,4 +18,3 @@ $objeto = new $controller();
 //se accede a la funcion deseada que se recibe por metodo GET
 $objeto->{$action}();
 //{$variable}() se ponen {} para acceder a una funcion o variable en espesifico
-//git con pull
