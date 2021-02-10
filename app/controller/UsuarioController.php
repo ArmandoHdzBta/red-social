@@ -8,6 +8,16 @@ use Model\Conexion;
 
 class UsuarioController
 {
+	//funcion para mostrar la vista de login
+	public function iniciarsesion()
+	{
+		require 'app/views/iniciarsesion.php';
+	}
+	//para mostrar la vista de registrarse
+	public function registrarse()
+	{
+		require 'app/views/iniciarsesion.php';
+	}
 	//funcion para mostrar la vista home despues de iniciar sesion
 	public function home()
 	{
