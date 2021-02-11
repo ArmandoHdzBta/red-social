@@ -16,7 +16,7 @@ class UsuarioController
 	//para mostrar la vista de registrarse
 	public function registrarse()
 	{
-		require 'app/views/iniciarsesion.php';
+		require 'app/views/registrar.php';
 	}
 	//funcion para mostrar la vista home despues de iniciar sesion
 	public function home()
