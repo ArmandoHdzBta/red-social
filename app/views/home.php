@@ -12,7 +12,7 @@
 			<label for="">
 				<img src="public/imagenes/default.png" alt="">
 			</label>
-			<a href="">PERFIL</a>
+			<a href=""><?php echo $res->usuario; ?></a>
 			<ul>
 				<li><a href="">1</a></li>
 				<li><a href="">2</a></li>

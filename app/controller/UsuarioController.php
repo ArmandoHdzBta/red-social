@@ -39,26 +39,26 @@ class UsuarioController
 		//se manda a llamar a la funcion que realiza el registro en la BD
 		$usuario->create();
 		//se redirecciona a la pagina principal
-		header("location: index.php?controller=Usuario&action=Home");
+		require 'app/views/home.php';
 	}
 	public function login()
 	{
 		//se verifican que si existan las variables
-		if ((!isset($_POST['usuario'])) || (!isset($_POST['password']))) {
+		if ((!isset($_POST['correo'])) || (!isset($_POST['password']))) {
 			echo "Datos incorrectos";
 			return false;
 		}
 		//se recuperan los datos del login
-		$usuario = $_POST['usuario'];
+		$correo = $_POST['correo'];
 		$password = $_POST['password'];
-
-		$res = Usuario::verificarUsuario($usuario, $password);
+		#echo "$correo $password";
+		$res = Usuario::verificarUsuario($correo, $password);
 
 		if ($res) {
-			header("location: index.php?controller=Usuario&action=Home");
+			require 'app/views/home.php';
 		}else{
-			$datos = "datos incorrectos";
-			require 'app/views/index.php';
+			$status = "datos incorrectos";
+			require 'app/views/iniciarsesion.php';
 		}
 	}
 }

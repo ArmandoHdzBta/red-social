@@ -18,11 +18,11 @@
 		<div class="content-tab-form">
 			<div id="iniciarSesion" class="iniciarSesion">
 				<h1>Iniciar sesion</h1>
-				<h2><?php echo isset($datos) ? $datos: "";?></h2>
+				<h2><?php echo isset($status) ? $status : "";?></h2>
 				<form action="index.php?controller=Usuario&action=login" method="POST">
 					<div class="form-group">
-						<label for="">Usuario <span class="req">*</span></label>
-						<input type="text" required="" name="usuario">
+						<label for="">Correo <span class="req">*</span></label>
+						<input type="email" required="" name="correo">
 					</div>
 					<div class="form-group">
 						<label for="">Contraseña <span class="req">*</span></label>

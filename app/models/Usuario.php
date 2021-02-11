@@ -32,14 +32,21 @@ class Usuario extends Conexion
 		$pre->execute();
 	}
 	//funcion para el login del usuario en la base de datos
-	static function verificarUsuario($usuario, $password)
+	static function verificarUsuario($correo, $password)
 	{
+		//se insancia la clase conexionpara tener acceso a la conexion
 		$conexion = new Conexion();
-		$sql = "SELECT * FROM usuario WHERE usuario=?";
+		//se genera la consulta con los parametros necesarios
+		$sql = "SELECT * FROM usuario WHERE correo = ?";
+		//se prepara la consulta parametros(conexion,consulta)
 		$pre = mysqli_prepare($conexion->con, $sql);
-		$pre->bind_param('s',$usuario);
+		//se ponen los parametros con su respectivo tipo de dato
+		$pre->bind_param('s',$correo);
+		//se ejecuta la consulta
 		$pre->execute();
+		//el la variable $resultado guardamos todos los datos que aroja la consulta
 		$resultado = $pre->get_result();
+		//lo convertimos a objeto y lo retornamos
 		return $resultado->fetch_object();
 	}
 }
