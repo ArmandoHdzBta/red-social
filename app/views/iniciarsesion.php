@@ -3,19 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=PT+Sans&family=Roboto&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="public/css/style.css">
 	<title>Red Social</title>
 </head>
 <body>
 	<!-- CCONTENDOR PRINCIPAL -->
-	<div class="content">
-		<!-- TABS -->
-		<ul class="content-tabs">
-			<li class="tab"><a href="#iniciarSesion">Iniciar secion</a></li>
-			<li class="tab"><a href="#registrarse">Registrarse</a></li>
-		</ul>
+	<div class="content animate-color">
 		<!-- CONTENIDO FORMULARIOS TAB -->
-		<div class="content-tab-form">
+		<div class="content-form">
 			<div id="iniciarSesion" class="iniciarSesion">
 				<h1>Iniciar sesion</h1>
 				<h2><?php echo isset($status) ? $status : "";?></h2>
@@ -30,9 +27,9 @@
 					</div>
 					<input type="submit" class="btn-succes" value="Iniciar sesion">
 				</form>
-				<p class="forgot-password"><a href="#">¿Se te olvido tu contraeña?</a></p>
+				<a href="#">¿Se te olvido tu contraeña?</a>
+				<p>Registrate <a href="#">aqui</a></p>
 			</div>
-
 		</div>
 	</div>
 

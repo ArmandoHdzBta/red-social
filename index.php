@@ -1,8 +1,4 @@
 <?php
-/* Variables por metodo get
- * controller
- * action
-*/
 //se verifica que las variables no esten vacias
 if ((!isset($_GET['controller'])) || (!isset($_GET['action']))) {
 	echo "Peticion invalida";
