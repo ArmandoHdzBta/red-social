@@ -12,7 +12,7 @@
 	<div class="content-home">
 		<div class="nav">
 			<label for="">
-				<img src="public/imagenes/default.png" alt="">
+				<img src="public/imagenes/imgperfil/<?php echo $res->foto_perfil; ?>" alt="">
 			</label>
 			<a href=""><?php echo $res->usuario; ?></a>
 			<ul>
@@ -26,18 +26,20 @@
 		<div class="contenido">
 			<div class="cont-post">
 				<p>publica</p>
-				<form action="">
-					<textarea name="textPost" id="" cols="30" rows="10"></textarea>
+				<form action="index.php?controller=Publicacion&action=registrarPublicacion" method="POST">
+					<input type="hidden" name="idusuario" value="<?php echo $res->idusuario ?>">
+					<textarea name="textoPost" cols="30" rows="10"></textarea>
+					<input type="file" name="fotoPost">
 					<input type="submit" value="Publicar">
 				</form>
 			</div>
 			<div class="post" id="idpost">
 				<div class="datos">
-					<p><a href="">Mando Hernandez</a></p>
+					<p><a href=""><?php echo $res->usuario; ?></a></p>
 					<span class="">:</span>
 				</div>
 				<div class="cont">
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore!</p>
+					<p></p>
 					<img src="" alt="">
 				</div>
 				<div class="like-comment">

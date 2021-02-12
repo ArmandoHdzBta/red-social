@@ -1,5 +1,7 @@
 :root{
 	--color-body: #1c1c1c;
+	--color-error: #E31010;
+	--color-error-borde: rgba(255, 31, 31, .4);
 	--color-font: #f0f0f0;
 	--color-link: #282DFF;
 	--color-link-hover: #2427D1;
@@ -23,6 +25,19 @@ body{
 	background: var(--color-body);
 	color: var(--color-font);
 	/*background: #F3F3F3;*/
+}
+
+#error{
+	display: block;
+	text-align: center;
+	padding: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-family: var(--font-cuerpo);
+	color: var(--color-font);
+	font-size: var(--font-cuerpo-size);
+	background: var(--color-error);
+	box-shadow: 0 2px 12px 6px var(--color-error-borde);
 }
 
 .error-box{

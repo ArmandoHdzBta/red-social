@@ -74,8 +74,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `red_social`.`usuario_post` (
   `idusuario_post` INT NOT NULL AUTO_INCREMENT,
   `id_usuario` INT NOT NULL,
-  `text` VARCHAR(45) NULL,
-  `foto` VARCHAR(45) NULL,
+  `texto` VARCHAR(45) NULL,
+  `foto` VARCHAR(45) NULL DEFAULT `default.png`,
   PRIMARY KEY (`idusuario_post`),
   INDEX `fk_usuario_usuario_post_idx` (`id_usuario` ASC) ,
   CONSTRAINT `fk_usuario_usuario_post`

@@ -15,7 +15,7 @@
 		<div class="content-form">
 			<div id="iniciarSesion" class="iniciarSesion">
 				<h1>Iniciar sesion</h1>
-				<h2><?php echo isset($status) ? $status : "";?></h2>
+				<h2 id="error">jdj<?php echo isset($status) ? $status : "";?></h2>
 				<form action="index.php?controller=Usuario&action=login" method="POST">
 					<div class="form-group">
 						<label for="">Correo <span class="req">*</span></label>
@@ -34,5 +34,6 @@
 	</div>
 
 	<script type="text/javascript" src="public/js/jquery-3.1.1.min.js"></script>
+	<script src="public/js/main.js"></script>
 </body>
 </html>

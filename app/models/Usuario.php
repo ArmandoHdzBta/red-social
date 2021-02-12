@@ -15,7 +15,7 @@ class Usuario extends Conexion
 	//funcion contructor
 	function __construct()
 	{
-		//se utiliza esto para que se pueda hacer us de la clase Conexion
+		//se utiliza esto para que se pueda hacer uso de la clase Conexion
 		//significa que tambien se va a correr el contructor padre
 		parent::__construct();
 	}
@@ -48,5 +48,33 @@ class Usuario extends Conexion
 		$resultado = $pre->get_result();
 		//lo convertimos a objeto y lo retornamos
 		return $resultado->fetch_object();
+	}
+
+	static function all(){
+		//conecxion comoverificar
+	}
+
+	static function delete($dato)
+	{
+		//objecto pata acceder a elkiminar
+		//sentencia sql para actualizar
+		$sql = "UPDATE usuario SET ";
+		//se prepara la consulta parametros(conexion, consulta)
+		$pre = mysqli_prepare($this->con,$sql);
+		//ponemos los tipos de dato (s=string(varchar)) y se pasan los parametros como se pusieron en la consulta
+		$pre->bind_param('ssssss',$this->nombre,$this->apellidoPaterno,$this->apellidoMaterno,$this->usuario,$this->correo,$this->contrasennia);
+		//ejecutamos la consulta
+		$pre->execute();
+	}
+	public function update()
+	{
+		//sentencia sql para actualizar
+		$sql = "UPDATE usuario SET ";
+		//se prepara la consulta parametros(conexion, consulta)
+		$pre = mysqli_prepare($this->con,$sql);
+		//ponemos los tipos de dato (s=string(varchar)) y se pasan los parametros como se pusieron en la consulta
+		$pre->bind_param('ssssss',$this->nombre,$this->apellidoPaterno,$this->apellidoMaterno,$this->usuario,$this->correo,$this->contrasennia);
+		//ejecutamos la consulta
+		$pre->execute();
 	}
 }

@@ -2,7 +2,7 @@
 //ser requiere al archivo del usuario
 require 'app/models/Conexion.php';
 require 'app/models/Usuario.php';
-//se usa la clase
+//se usan las clases
 use Model\Usuario;
 use Model\Conexion;
 
@@ -53,10 +53,12 @@ class UsuarioController
 		$password = $_POST['password'];
 		#echo "$correo $password";
 		$res = Usuario::verificarUsuario($correo, $password);
-
+		//verifica si la variable $res no esta vacia
 		if ($res) {
+			//se redirecciona a la pagina de vista de inicio
 			require 'app/views/home.php';
 		}else{
+			//se devuele un mensaje a la misma vista
 			$status = "datos incorrectos";
 			require 'app/views/iniciarsesion.php';
 		}
