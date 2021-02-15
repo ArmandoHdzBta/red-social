@@ -19,8 +19,8 @@ class PublicacionController
 		require 'app/views/home.php';
 	}
 	//ver las publicaciones del usuario
-	public function verUsuarioPost()
+	public function verPost()
 	{
-		Publicacion::verPost();
+		echo json_encode(Publicacion::all());
 	}
 }

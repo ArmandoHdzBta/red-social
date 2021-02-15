@@ -1,7 +1,9 @@
 :root{
 	--color-body: #1c1c1c;
 	--color-error: #E31010;
-	--color-error-borde: rgba(255, 31, 31, .4);
+	--color-error-shadow: red;
+	--color-success: #00a135;
+	--color-success-shadow: #00b347;
 	--color-font: #f0f0f0;
 	--color-link-shadow: #282DFF;
 	--color-border-shadow: #2ecc71;
@@ -39,7 +41,22 @@ body{
 	color: var(--color-font);
 	font-size: var(--font-cuerpo-size);
 	background: var(--color-error);
-	box-shadow: 0 2px 12px 6px var(--color-error-borde);
+	box-shadow: 0px 0px 20px var(--color-error-shadow);
+}
+
+#success{
+	display: block;
+	text-align: center;
+	padding: 10px;
+	width: 50%;
+	margin: auto;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-family: var(--font-cuerpo);
+	color: var(--color-font);
+	font-size: var(--font-cuerpo-size);
+	background: var(--color-success);
+	box-shadow: 0px 0px 20px var(--color-success-shadow);
 }
 
 .error-box{
@@ -164,7 +181,7 @@ body{
 
 .form-group label{
 	display: inline-block;
-	text-align: left;
+	text-align: right;
 	font-family: var(--font-cuerpo);
 	font-size: var(--font-cuerpo-size);
 }

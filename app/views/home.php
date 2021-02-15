@@ -7,11 +7,13 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=PT+Sans&family=Roboto&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="public/css/style.css">
-	<title>Document</title>
+	<title>Home</title>
 	<script src="https://kit.fontawesome.com/a665ad6c22.js" crossorigin="anonymous"></script>
 </head>
 <body>
+	<!-- CONTENEDOR PRINCIPAL -->
 	<div class="content-home">
+		<!-- CONTENEDOR DE LA CABECERA -->
 		<div class="header">
 			<h1>titulo</h1>
 			<nav>
@@ -27,7 +29,7 @@
 			</label>
 			<a href=""><?php echo $res->usuario; ?></a>
 			<ul>
-				<li><a href="">1</a></li>
+				<li><a href="">Mensajes</a></li>
 				<li><a href="">2</a></li>
 				<li><a href="">3</a></li>
 				<li><a href="">4</a></li>
@@ -46,8 +48,8 @@
 			</div>
 			<div class="post" id="idpost">
 				<div class="datos">
-					<p><a href="">usuario</a></p>
-					<a href=""><i class="fas fa-ellipsis-v"></i></a>
+					<p><a href="#">usuario</a></p>
+					<a href="#"><i class="fas fa-ellipsis-v"></i></a>
 				</div>
 				<div class="cont">
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, reiciendis.</p>
@@ -62,8 +64,8 @@
 			</div>
 			<div class="post" id="idpost">
 				<div class="datos">
-					<p><a href="">usuario</a></p>
-					<a href=""><i class="fas fa-ellipsis-v"></i></a>
+					<p><a href="#">usuario</a></p>
+					<a href="#"><i class="fas fa-ellipsis-v"></i></a>
 				</div>
 				<div class="cont">
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, reiciendis.</p>
@@ -73,7 +75,7 @@
 					<button><i class="fas fa-heart"></i> 11000</button>
 				</div>
 				<div class="coment">
-					<button><i class="fas fa-comment"></i> 2</button>
+					<button><i class="fas fa-comment"></i> 20000</button>
 				</div>
 			</div>
 		</div>
@@ -88,5 +90,8 @@
 			</ul>
 		</div>
 	</div>
+	<!-- ENLACES A LOS SCRIPTS -->
+	<script src="public/js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="public/js/publicacion.js"></script>
 </body>
 </html>

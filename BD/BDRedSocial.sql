@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `red_social`.`usuario` (
   `usuario` VARCHAR(45) NOT NULL,
   `correo` VARCHAR(45) NOT NULL,
   `contrasennia` VARCHAR(255) NOT NULL,
-  `foto_perfil` VARCHAR(45) NULL,
+  `foto_perfil` VARCHAR(45) NULL DEFAULT `default.jpg`,
   PRIMARY KEY (`idusuario`))
 ENGINE = InnoDB;
 

@@ -33,14 +33,14 @@ class Publicacion extends Conexion
 	    //sentencia sql
 	    $sql = new Conexion();
 	    //
-	    $pre = mysqli_prepare($sql->con, "SELECT * FROM usuarios");
+	    $pre = mysqli_prepare($sql->con, "SELECT * FROM usuario_post");
 	    //
 	    $pre->execute();
 	    //
 	    $res = $pre->get_result();
 	    //
-	    while ($y=mysqli_fetch_assoc($res)){
-	        $t[]=$y;
+	    while ($y = mysqli_fetch_assoc($res)){
+	        $t[] = $y;
         }
         //retorna valor de t
          return $t;
@@ -48,23 +48,23 @@ class Publicacion extends Conexion
 
     static function eliminar($dato){
         //sentencia sql
-     $sql = Conexion();
-     //se prepara la consulta parametros(conexion, consulta)
-     $pre = mysqli_prepare($sql->con, "DELETE FROM usuarios WHERE cod_usuario =?");
-     //se prepara los parametros
-     $pre->bind_param("s", $dato);
-     //ejecutamos la consulta
-     $pre->execute();
+		$sql = Conexion();
+		//se prepara la consulta parametros(conexion, consulta)
+		$pre = mysqli_prepare($sql->con, "DELETE FROM usuario_post WHERE idusuario_post = ?");
+		//se prepara los parametros
+		$pre->bind_param("i", $dato);
+		//ejecutamos la consulta
+		$pre->execute();
 
     }
 
      function update(){
 	    // los tipos de dato
-         $pre_ = mysqli_prepare($this->con,"UPDATE usuarios set nombre=? ,apellido_paterno=? ,apellido_materno=? ,usuario=? ,correo=? ,contrasennia=?");
-        //ponemos los tipos de dato
-         $pre_->bind_param("si",$this->nombre,$this->apellido_paterno,$this->apellido_materno,$this->usuario,$this->correo,$this->contrasennia);
-         //ejecutamos la consulta
-         $pre_->execute();
+		$pre_ = mysqli_prepare($this->con,"UPDATE usuarios set nombre=? ,apellido_paterno=? ,apellido_materno=? ,usuario=? ,correo=? ,contrasennia=?");
+		//ponemos los tipos de dato
+		$pre_->bind_param("si",$this->nombre,$this->apellido_paterno,$this->apellido_materno,$this->usuario,$this->correo,$this->contrasennia);
+		//ejecutamos la consulta
+		$pre_->execute();
 	}
 
 }

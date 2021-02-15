@@ -42,8 +42,9 @@ class UsuarioController
 		$usuario->contrasennia = hash("SHA256", $_POST['password']);
 		//se manda a llamar a la funcion que realiza el registro en la BD
 		$usuario->create();
-		//se redirecciona a la pagina principal
-		require 'app/views/home.php';
+		//redireccion a la misma pagina con mensaje
+		$status = "Regristrado. Inicia sesion";
+		require 'app/views/registrar.php';
 	}
 	public function login()
 	{
