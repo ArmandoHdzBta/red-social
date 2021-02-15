@@ -8,6 +8,16 @@ use Model\Conexion;
 
 class UsuarioController
 {
+	function __construct()
+	{
+		if ($_GET['action'] == 'candado') {
+			if (!isset($_SESSION['sesion'])) {
+				// echo "no has iniciado sesion";
+				// return false;
+				header("location: index.php?controller=Usuario&action=iniciarsesion");
+			}
+		}
+	}
 	//funcion para mostrar la vista de login
 	public function iniciarsesion()
 	{
@@ -23,11 +33,6 @@ class UsuarioController
 	{
 		require 'app/views/home.php';
 	}
-	public function homehtml()
-	{
-		require 'app/views/home.html';
-	}
-
 	//funcion registrar para tomar los datos escritos en el formulario de la vista home.php
 	public function register()
 	{
@@ -56,16 +61,28 @@ class UsuarioController
 		//se recuperan los datos del login
 		$correo = $_POST['correo'];
 		$password = $_POST['password'];
-		#echo "$correo $password";
+		#se accede a la clase statica y se le pasan los valores de correo y contraseña
 		$res = Usuario::verificarUsuario($correo, $password);
 		//verifica si la variable $res no esta vacia
 		if ($res) {
 			//se redirecciona a la pagina de vista de inicio
+			$_SESSION['sesion'] = $res->idusuario;
 			require 'app/views/home.php';
 		}else{
 			//se devuele un mensaje a la misma vista
 			$status = "datos incorrectos";
 			require 'app/views/iniciarsesion.php';
 		}
+	}
+	public function logout()
+	{
+		if (isset($_SESSION['sesion'])) {
+			unset($_SESSION['sesion']);
+		}
+		// session_destroy();
+	}
+	public function candado()
+	{
+		echo "salido";
 	}
 }

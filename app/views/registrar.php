@@ -12,7 +12,7 @@
     <div class="content">
         <div class="registrarse" id="registrarse">
             <h1>Registrarse</h1>
-            <h2 id="success"><?php echo isset($status) ? $status : "";?></h2>
+            <h2 id="success"><?php echo isset($status) ? $status : "ss";?></h2>
             <form action="index.php?controller=Usuario&action=register" method="POST">
                 <div class="form-group">
                     <label for="">Nombre <span class="req">*</span></label>

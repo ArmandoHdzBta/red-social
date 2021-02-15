@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,7 +14,7 @@
 	<div class="content-home">
 		<!-- CONTENEDOR DE LA CABECERA -->
 		<div class="header">
-			<h1>titulo</h1>
+			<h1>HOME</h1>
 			<nav>
 				<a href="#"><i class="fas fa-search"></i></a>
 				<a href="#"><i class="fas fa-users"></i></a>
@@ -47,20 +46,7 @@
 				</form>
 			</div>
 			<div class="post" id="idpost">
-				<div class="datos">
-					<p><a href="#">usuario</a></p>
-					<a href="#"><i class="fas fa-ellipsis-v"></i></a>
-				</div>
-				<div class="cont">
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, reiciendis.</p>
-					<img src="public/imagenes/imgperfil/default.png" alt="">
-				</div>
-				<div class="like">
-					<button><i class="fas fa-heart"></i> 11000</button>
-				</div>
-				<div class="coment">
-					<button><i class="fas fa-comment"></i> 2</button>
-				</div>
+
 			</div>
 			<div class="post" id="idpost">
 				<div class="datos">

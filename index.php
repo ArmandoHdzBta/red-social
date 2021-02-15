@@ -3,7 +3,7 @@
 if ((!isset($_GET['controller'])) || (!isset($_GET['action']))) {
 	echo "Peticion invalida";
 }
-
+session_start();
 $controller = $_GET['controller']."Controller";
 //se incluyen los controladores y se concatena con el nombre pasado por metodo GET .php
 require 'app/controller/'.$controller.'.php';
