@@ -23,9 +23,13 @@ class UsuarioController
 	{
 		require 'app/views/home.php';
 	}
+	public function homehtml()
+	{
+		require 'app/views/home.html';
+	}
 
 	//funcion registrar para tomar los datos escritos en el formulario de la vista home.php
-	public function registrar()
+	public function register()
 	{
 		//se crea el objeto usuario
 		$usuario = new Usuario();

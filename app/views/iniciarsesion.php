@@ -10,26 +10,23 @@
 </head>
 <body>
 	<!-- CCONTENDOR PRINCIPAL -->
-	<div class="content animate-color">
-		<!-- CONTENIDO FORMULARIOS TAB -->
-		<div class="content-form">
-			<div id="iniciarSesion" class="iniciarSesion">
-				<h1>Iniciar sesion</h1>
-				<h2 id="error">jdj<?php echo isset($status) ? $status : "";?></h2>
-				<form action="index.php?controller=Usuario&action=login" method="POST">
-					<div class="form-group">
-						<label for="">Correo <span class="req">*</span></label>
-						<input type="email" required="" name="correo">
-					</div>
-					<div class="form-group">
-						<label for="">Contraseña <span class="req">*</span></label>
-						<input type="password" required="" name="password">
-					</div>
-					<input type="submit" class="btn-succes" value="Iniciar sesion">
-				</form>
-				<a href="#">¿Se te olvido tu contraeña?</a>
-				<p>Registrate <a href="#">aqui</a></p>
-			</div>
+	<div class="content">
+		<div id="iniciarSesion" class="iniciarSesion">
+			<h1>Iniciar sesion</h1>
+			<h2 id="error"><?php echo isset($status) ? $status : "";?></h2>
+			<form action="index.php?controller=Usuario&action=login" method="POST">
+				<div class="form-group">
+					<label for="">Correo <span class="req">*</span></label>
+					<input type="email" required="" name="correo">
+				</div>
+				<div class="form-group">
+					<label for="">Contraseña <span class="req">*</span></label>
+					<input type="password" required="" name="password">
+				</div>
+				<input type="submit" class="btn-succes" value="Iniciar sesion">
+			</form>
+			<a href="#">¿Se te olvido tu contraeña?</a>
+			<p>Registrate <a href="index.php?controller=Usuario&action=registrarse">aqui</a></p>
 		</div>
 	</div>
 

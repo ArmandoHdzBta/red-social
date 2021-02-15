@@ -10,9 +10,9 @@
 </head>
 <body>
     <div class="content">
-        <div id="registrarse">
+        <div class="registrarse" id="registrarse">
             <h1>Registrarse</h1>
-            <form action="index.php?controller=Usuario&action=registrar" method="POST">
+            <form action="index.php?controller=Usuario&action=register" method="POST">
                 <div class="form-group">
                     <label for="">Nombre <span class="req">*</span></label>
                     <input type="text" name="nombre" required="">
@@ -43,6 +43,7 @@
                 </div>
                 <input type="submit" class="btn-succes" value="Registrarse">
             </form>
+            <a href="index.php?controller=Usuario&action=iniciarsesion">¿Ya tienes cuenta?. Inicia sesion</a>
         </div>
     </div>
 </body>

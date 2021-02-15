@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,9 +8,19 @@
 	<link href="https://fonts.googleapis.com/css2?family=PT+Sans&family=Roboto&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="public/css/style.css">
 	<title>Document</title>
+	<script src="https://kit.fontawesome.com/a665ad6c22.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div class="content-home">
+		<div class="header">
+			<h1>titulo</h1>
+			<nav>
+				<a href="#"><i class="fas fa-search"></i></a>
+				<a href="#"><i class="fas fa-users"></i></a>
+				<a href="#">perfil</a>
+				<a href="#">salir</a>
+			</nav>
+		</div>
 		<div class="nav">
 			<label for="">
 				<img src="public/imagenes/imgperfil/<?php echo $res->foto_perfil; ?>" alt="">
@@ -26,27 +37,55 @@
 		<div class="contenido">
 			<div class="cont-post">
 				<p>publica</p>
-				<form action="index.php?controller=Publicacion&action=registrarPublicacion" method="POST">
+				<form action="index.php?controller=Publicacion&action=registrarPublicacion" method="POST" enctype="">
 					<input type="hidden" name="idusuario" value="<?php echo $res->idusuario ?>">
-					<textarea name="textoPost" cols="30" rows="10"></textarea>
+					<textarea name="textoPost"></textarea>
 					<input type="file" name="fotoPost">
 					<input type="submit" value="Publicar">
 				</form>
 			</div>
 			<div class="post" id="idpost">
 				<div class="datos">
-					<p><a href=""><?php echo $res->usuario; ?></a></p>
-					<span class="">:</span>
+					<p><a href="">usuario</a></p>
+					<a href=""><i class="fas fa-ellipsis-v"></i></a>
 				</div>
 				<div class="cont">
-					<p></p>
-					<img src="" alt="">
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, reiciendis.</p>
+					<img src="public/imagenes/imgperfil/default.png" alt="">
 				</div>
-				<div class="like-comment">
-					<button>like</button>
-					<button>coment</button>
+				<div class="like">
+					<button><i class="fas fa-heart"></i> 11000</button>
+				</div>
+				<div class="coment">
+					<button><i class="fas fa-comment"></i> 2</button>
 				</div>
 			</div>
+			<div class="post" id="idpost">
+				<div class="datos">
+					<p><a href="">usuario</a></p>
+					<a href=""><i class="fas fa-ellipsis-v"></i></a>
+				</div>
+				<div class="cont">
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, reiciendis.</p>
+					<img src="public/imagenes/imgperfil/default.png" alt="">
+				</div>
+				<div class="like">
+					<button><i class="fas fa-heart"></i> 11000</button>
+				</div>
+				<div class="coment">
+					<button><i class="fas fa-comment"></i> 2</button>
+				</div>
+			</div>
+		</div>
+		<div class="friends">
+			<ul>
+				<li><a href="">1</a></li>
+				<li><a href="">2</a></li>
+				<li><a href="">3</a></li>
+				<li><a href="">4</a></li>
+				<li><a href="">5</a></li>
+				<li><a href="">6</a></li>
+			</ul>
 		</div>
 	</div>
 </body>
