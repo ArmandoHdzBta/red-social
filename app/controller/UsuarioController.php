@@ -61,8 +61,10 @@ class UsuarioController
 		//se recuperan los datos del login
 		$correo = $_POST['correo'];
 		$password = $_POST['password'];
+		//se encripta la contraseña
+		$passwordHash = hash("SHA256", $password);
 		#se accede a la clase statica y se le pasan los valores de correo y contraseña
-		$res = Usuario::verificarUsuario($correo, $password);
+		$res = Usuario::verificarUsuario($correo, $passwordHash);
 		//verifica si la variable $res no esta vacia
 		if ($res) {
 			//se redirecciona a la pagina de vista de inicio
@@ -72,6 +74,24 @@ class UsuarioController
 			//se devuele un mensaje a la misma vista
 			$status = "datos incorrectos";
 			require 'app/views/iniciarsesion.php';
+		}
+	}
+	public function forgotPasswordView()
+	{
+		require 'app/views/forgotPassword.php';
+	}
+	public function forgotPassword(){
+		$usuario = $_POST['usuario'];
+		$correo = $_POST['correo'];
+		$contrasennia = $_POST['password'];
+		$password = hash("SHA256", $contrasennia);
+		$res = Usuario::cambiarContrasennia($usuario,$correo,$password);
+
+		if ($res) {
+			header("location: index.php?controller=Usuario&action=iniciarsesion");
+		}else{
+			$status = "Cuenta no encontrada";
+			require 'app/views/forgotPassword.php';
 		}
 	}
 	public function logout()

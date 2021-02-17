@@ -19,14 +19,14 @@
 				<a href="#"><i class="fas fa-search"></i></a>
 				<a href="#"><i class="fas fa-users"></i></a>
 				<a href="#">perfil</a>
-				<a href="#">salir</a>
+				<a href="index.php?controller=Usuario&action=logout">salir</a>
 			</nav>
 		</div>
 		<div class="nav">
 			<label for="">
 				<img src="public/imagenes/imgperfil/<?php echo $res->foto_perfil; ?>" alt="">
 			</label>
-			<a href=""><?php echo $res->usuario; ?></a>
+			<a href=""><?php echo $_SESSION['sesion']; ?></a>
 			<ul>
 				<li><a href="">Mensajes</a></li>
 				<li><a href="">2</a></li>
@@ -35,18 +35,15 @@
 				<li><a href="">5</a></li>
 			</ul>
 		</div>
-		<div class="contenido">
-			<div class="cont-post">
+		<div class="contenido" id="contenido">
+			<div class="cont-post" id="cont-post">
 				<p>publica</p>
-				<form action="index.php?controller=Publicacion&action=registrarPublicacion" method="POST" enctype="">
+				<form action="index.php?controller=Publicacion&action=registrarPublicacion" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="idusuario" value="<?php echo $res->idusuario ?>">
 					<textarea name="textoPost"></textarea>
 					<input type="file" name="fotoPost">
 					<input type="submit" value="Publicar">
 				</form>
-			</div>
-			<div class="post" id="idpost">
-
 			</div>
 			<div class="post" id="idpost">
 				<div class="datos">
@@ -76,6 +73,18 @@
 			</ul>
 		</div>
 	</div>
+	<!-- VENTANAS EMERJENTES -->
+	<!-- <div class="box">
+		<div class="box-content">
+			<a href=""><i class="fas fa-">x</i></a>
+			<div class="pop-list">
+				<div>
+					<a href="">usuario</a>
+					<button>enviar solicitud</button>
+				</div>
+			</div>
+		</div>
+	</div> -->
 	<!-- ENLACES A LOS SCRIPTS -->
 	<script src="public/js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="public/js/publicacion.js"></script>

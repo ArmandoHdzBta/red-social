@@ -25,7 +25,7 @@
 				</div>
 				<input type="submit" class="btn-succes" value="Iniciar sesion">
 			</form>
-			<a href="#">¿Se te olvido tu contraeña?</a>
+			<a href="index.php?controller=Usuario&action=forgotPasswordView">¿Se te olvido tu contraeña?</a>
 			<p>Registrate <a href="index.php?controller=Usuario&action=registrarse">aqui</a></p>
 		</div>
 	</div>

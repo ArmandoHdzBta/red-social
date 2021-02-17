@@ -38,11 +38,11 @@ class Usuario extends Conexion
 		//se insancia la clase conexionpara tener acceso a la conexion
 		$conexion = new Conexion();
 		//se genera la consulta con los parametros necesarios
-		$sql = "SELECT * FROM usuario WHERE correo = ?";
+		$sql = "SELECT * FROM usuario WHERE correo = ? AND contrasennia = ?";
 		//se prepara la consulta parametros(conexion,consulta)
 		$pre = mysqli_prepare($conexion->con, $sql);
 		//se ponen los parametros con su respectivo tipo de dato
-		$pre->bind_param('s',$correo);
+		$pre->bind_param('ss',$correo,$password);
 		//se ejecuta la consulta
 		$pre->execute();
 		//el la variable $resultado guardamos todos los datos que aroja la consulta
@@ -94,6 +94,15 @@ class Usuario extends Conexion
 		//ponemos los tipos de dato (s=string(varchar)) y se pasan los parametros como se pusieron en la consulta
 		$pre->bind_param('sssssssi',$this->nombre,$this->apellidoPaterno,$this->apellidoMaterno,$this->usuario,$this->correo,$this->contrasennia,$this->foto_perfil,$this->idUsuario);
 		//ejecutamos la consulta
+		$pre->execute();
+	}
+	static function cambiarContrasennia($user, $email, $password)
+	{
+		//objecto pata acceder a la clase de la base de datos
+		$conexion = new Conexion();
+		$sql = "UPDATE usuario SET contrasennia = ? WHERE usuario = ? AND correo = ?";
+		$pre = mysqli_prepare($conexion->con, $sql);
+		$pre->bind_param('sss', $password,$user,$email);
 		$pre->execute();
 	}
 }

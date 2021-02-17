@@ -19,11 +19,11 @@ class Publicacion extends Conexion
 	public function create()
 	{
 		//sentencia sql y se declaran los parametros
-		$sql = "INSERT INTO usuario_post(id_usuario,texto) VALUES (?,?)";
+		$sql = "INSERT INTO usuario_post(id_usuario,texto,foto) VALUES (?,?,?)";
 		//se prepara la consulta parametros(conexion, consulta)
 		$pre = mysqli_prepare($this->con,$sql);
-		//ponemos los tipos de dato (s=string(varchar)) y se pasan los parametros como se pusieron en la consulta
-		$pre->bind_param('is',$this->id_usuario,$this->texto);
+		//ponemos los tipos de dato y se pasan los parametros como se pusieron en la consulta
+		$pre->bind_param('iss',$this->id_usuario,$this->texto,$this->foto);
 		//ejecutamos la consulta
 		$pre->execute();
 
@@ -33,7 +33,7 @@ class Publicacion extends Conexion
 	    //sentencia sql
 	    $sql = new Conexion();
 	    //
-	    $pre = mysqli_prepare($sql->con, "SELECT * FROM usuario_post");
+	    $pre = mysqli_prepare($sql->con, "SELECT idusuario_post, id_usuario, texto, foto, usuario FROM usuario_post INNER JOIN usuario ON usuario_post.id_usuario = usuario.idusuario WHERE id_usuario = 5");
 	    //
 	    $pre->execute();
 	    //
