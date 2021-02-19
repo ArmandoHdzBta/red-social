@@ -22,9 +22,15 @@ class PublicacionController
 	//ver las publicaciones del usuario
 	public function verPost()
 	{
-		echo json_encode(Publicacion::all());
+		$idusuario = $_POST['idusuario'];
+		echo json_encode(Publicacion::all($idusuario));
 	}
-
+	public function like()
+	{
+		$idpost = $_POST['idpost'];
+		$idusuario = $_POST['idusuario'];
+		Publicacion::darLike($idpost,$idusuario);
+	}
 }
 //funcion para renombrar las fotos que se suban
 function renameFoto(){

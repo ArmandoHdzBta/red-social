@@ -2,9 +2,11 @@
 //ser requiere al archivo del usuario
 require 'app/models/Conexion.php';
 require 'app/models/Usuario.php';
+require 'app/models/Chat.php';
 //se usan las clases
 use Model\Usuario;
 use Model\Conexion;
+use Model\Chat;
 
 class UsuarioController
 {
@@ -69,6 +71,12 @@ class UsuarioController
 		if ($res) {
 			//se redirecciona a la pagina de vista de inicio
 			$_SESSION['sesion'] = $res->idusuario;
+			$_SESSION['nombre'] = $res->nombre;
+			$_SESSION['app'] = $res->apellido_paterno;
+			$_SESSION['apm'] = $res->apellido_materno;
+			$_SESSION['usuario'] = $res->usuario;
+			$_SESSION['correo'] = $res->correo;
+			$_SESSION['foto'] = $res->foto_perfil;
 			require 'app/views/home.php';
 		}else{
 			//se devuele un mensaje a la misma vista
@@ -76,6 +84,44 @@ class UsuarioController
 			require 'app/views/iniciarsesion.php';
 		}
 	}
+	public function actualizar()
+	{
+		$usuario = new Usuario();
+		$usuario->idUsuario = $_POST['idusuario'];
+		$usuario->nombre = $_POST['nombre'];
+		$usuario->apellidoPaterno = $_POST['app'];
+		$usuario->apellidoMaterno = $_POST['apm'];
+		$usuario->usuario = $_POST['usuario'];
+		$usuario->correo = $_POST['correo'];
+		$usuario->fotoPerfil = renameFoto();
+		$res = $usuario->update();
+		require 'app/views/perfil.php';
+	}
+	public function perfil()
+	{
+		require 'app/views/perfil.php';
+	}
+	public function informacion()
+	{
+		$idusuario = $_POST['idusuario'];
+		$res = Usuario::usuario($idusuario);
+		echo json_encode($res);
+	}
+	public function listaAmigos()
+	{
+		$idusuario = $_POST['idusuario'];
+		echo json_encode(Usuario::all($idusuario));
+	}
+
+	public function chat()
+	{
+		$chat = new Chat();
+		$chat->de = $_POST['de'];
+		$chat->de = $_POST['para'];
+		$chat->create();
+		require 'app/views/chat.php';
+	}
+
 	public function forgotPasswordView()
 	{
 		require 'app/views/forgotPassword.php';
@@ -99,10 +145,31 @@ class UsuarioController
 		if (isset($_SESSION['sesion'])) {
 			unset($_SESSION['sesion']);
 		}
-		// session_destroy();
+		header("location: index.php?controller=Usuario&action=iniciarsesion");
 	}
 	public function candado()
 	{
 		echo "salido";
 	}
+}
+
+//funcion para renombrar las fotos que se suban
+function renameFoto(){
+	//variable global
+	$img = "";
+	//comprobamos si existe el fichero
+	if (file_exists($_FILES['foto']['tmp_name'])) {
+		//obtenemos la extencion de la imagen
+		$ext = explode(".", $_FILES['foto']['name']);
+		//verificamos que sea igual a ina de las extenciones permitidas
+		if ($_FILES['foto']['type'] == "image/jpg" || $_FILES['foto']['type'] == "image/jpeg" || $_FILES['foto']['type'] == "image/png") {
+			//re nombramos concatenando el id del usuario
+			//el tiempo en microsegundos y la extencion
+			$img = $_POST['idusuario']."_".round(microtime(true)).".".end($ext);
+			//movemos el archivo al directorio publico
+			move_uploaded_file($_FILES['foto']['tmp_name'], "public/imagenes/imgperfil/".$img);
+		}
+	}
+	//re tornamos el valor que se obtenga
+	return $img;
 }

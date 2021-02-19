@@ -55,11 +55,54 @@ class Usuario extends Conexion
 		//objecto pata acceder a la clase de la base de datos
 		$conexion = new Conexion();
 		//sentencia sql para recuperar los datos de la base de datos
-		$sql = "SELECT idusuario, usuario FROM usuario INNER JOIN lista_amigos ON id_usuario = ? AND id_amigo = usuario.idusuario WHERE status = 1";
+		$sql = "SELECT idusuario, usuario FROM usuario INNER JOIN lista_amigos ON id_usuario = ? AND id_amigo = usuario.idusuario WHERE status = 0";
 		//se prepara la consulta parametros(conexion, consulta)
 		$pre = mysqli_prepare($conexion->con,$sql);
 		//ponemos los tipos de dato y se pasan los parametros como se pusieron en la consulta
-		$pre->bind_param('ii',$dato);
+		$pre->bind_param('i',$dato);
+		//ejecutamos la consulta
+		$pre->execute();
+		//guardamos los resultados de la consulta
+		$res = $pre->get_result();
+		//recorremos el para guardar todos los datos de la cosulta en la riable $t
+		while ($y = mysqli_fetch_assoc($res)) {
+			$t[] = $y;
+		}
+		//retornamos todos los valores
+		return $t;
+	}
+
+	static function usuario($idusuario){
+		$conexion = new Conexion();
+
+		$sql = "SELECT * FROM usuario WHERE idusuario = ?";
+
+		//se prepara la consulta parametros(conexion, consulta)
+		$pre = mysqli_prepare($conexion->con,$sql);
+		//ponemos los tipos de dato y se pasan los parametros como se pusieron en la consulta
+		$pre->bind_param('i',$idusuario);
+		//ejecutamos la consulta
+		$pre->execute();
+		//guardamos los resultados de la consulta
+		$res = $pre->get_result();
+		//recorremos el para guardar todos los datos de la cosulta en la riable $t
+		while ($y = mysqli_fetch_assoc($res)) {
+			$t[] = $y;
+		}
+		//retornamos todos los valores
+		return $t;
+	}
+
+	static function all($idusuario){
+		//objecto pata acceder a la clase de la base de datos
+		$conexion = new Conexion();
+
+		$sql = "SELECT idusuario, usuario, status FROM usuario INNER JOIN lista_amigos ON usuario.idusuario=lista_amigos.id_amigo WHERE status = 1 AND lista_amigos.id_usuario = ? OR lista_amigos.id_amigo = ?";
+
+		//se prepara la consulta parametros(conexion, consulta)
+		$pre = mysqli_prepare($conexion->con,$sql);
+		//ponemos los tipos de dato y se pasan los parametros como se pusieron en la consulta
+		$pre->bind_param('ii',$idusuario,$idusuario);
 		//ejecutamos la consulta
 		$pre->execute();
 		//guardamos los resultados de la consulta
@@ -88,11 +131,11 @@ class Usuario extends Conexion
 	public function update()
 	{
 		//sentencia sql para actualizar en la base de datos
-		$sql = "UPDATE usuario SET nombre = ?, apellido_paterno = ?, apellido_materno = ?, usuario = ?, correo = ?, contrasennia = ?, foto_perfil = ? WHERE idusuario = ?";
+		$sql = "UPDATE usuario SET nombre = ?, apellido_paterno = ?, apellido_materno = ?, usuario = ?, correo = ?, foto_perfil = ? WHERE idusuario = ?";
 		//se prepara la consulta parametros(conexion, consulta)
 		$pre = mysqli_prepare($this->con,$sql);
 		//ponemos los tipos de dato (s=string(varchar)) y se pasan los parametros como se pusieron en la consulta
-		$pre->bind_param('sssssssi',$this->nombre,$this->apellidoPaterno,$this->apellidoMaterno,$this->usuario,$this->correo,$this->contrasennia,$this->foto_perfil,$this->idUsuario);
+		$pre->bind_param('ssssssi',$this->nombre,$this->apellidoPaterno,$this->apellidoMaterno,$this->usuario,$this->correo,$this->fotoPerfil,$this->idUsuario);
 		//ejecutamos la consulta
 		$pre->execute();
 	}

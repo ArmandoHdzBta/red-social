@@ -29,11 +29,13 @@ class Publicacion extends Conexion
 
 	}
 	//funcion que nos muestra todos los post del usuario
-	static function all(){
+	static function all($idusuario){
 	    //sentencia sql
 	    $sql = new Conexion();
 	    //
-	    $pre = mysqli_prepare($sql->con, "SELECT idusuario_post, id_usuario, texto, foto, usuario FROM usuario_post INNER JOIN usuario ON usuario_post.id_usuario = usuario.idusuario WHERE id_usuario = 5");
+	    $pre = mysqli_prepare($sql->con, "SELECT usuario_post.idusuario_post, usuario_post.id_usuario, usuario_post.texto, usuario_post.foto, usuario.usuario FROM usuario INNER JOIN usuario_post ON usuario_post.id_usuario = usuario.idusuario WHERE usuario.idusuario = ?");
+	    //
+	    $pre->bind_param('i',$idusuario);
 	    //
 	    $pre->execute();
 	    //
@@ -63,6 +65,17 @@ class Publicacion extends Conexion
 		$pre_ = mysqli_prepare($this->con,"UPDATE usuarios set nombre=? ,apellido_paterno=? ,apellido_materno=? ,usuario=? ,correo=? ,contrasennia=?");
 		//ponemos los tipos de dato
 		$pre_->bind_param("si",$this->nombre,$this->apellido_paterno,$this->apellido_materno,$this->usuario,$this->correo,$this->contrasennia);
+		//ejecutamos la consulta
+		$pre_->execute();
+	}
+
+	static function darLike($idpost,$idusuario)
+	{
+		$conexion = new Conexion();
+		// los tipos de dato
+		$pre_ = mysqli_prepare($conexion->con,"INSERT INTO usuario_post_reaction(id_usuario_post,id_usuario) VALUES (?,?)");
+		//ponemos los tipos de dato
+		$pre_->bind_param("ii",$idpost,$idusuario);
 		//ejecutamos la consulta
 		$pre_->execute();
 	}
