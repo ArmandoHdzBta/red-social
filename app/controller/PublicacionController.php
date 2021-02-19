@@ -21,10 +21,20 @@ class PublicacionController
 	}
 	//ver las publicaciones del usuario
 	public function verPost()
-	{
+	{	//recibimos el id de usurio
 		$idusuario = $_POST['idusuario'];
+		//se deviuele un JSON
 		echo json_encode(Publicacion::all($idusuario));
 	}
+	//funcionpara eliminar un post
+	public function eliminar(){
+		//pr metodo get obtenemos el id del post
+		$idpost = $_GET['idpost'];
+		//se hace la operacion y se devuele a la pagina de inicio
+		Publicacion::delete($idpost);
+		require 'app/views/home.php';
+	}
+	//funcio  para dar like a un post
 	public function like()
 	{
 		$idpost = $_POST['idpost'];

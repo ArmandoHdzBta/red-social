@@ -29,9 +29,6 @@
 				<img src="public/imagenes/imgperfil/<?php echo $_SESSION['foto']; ?>" alt="">
 			</label>
 			<a href="index.php?controller=Usuario&action=perfil"><?php echo $_SESSION['usuario']; ?></a>
-			<ul>
-				<li><a href="index.php?controller=Usuario&action=chat">Mensajes</a></li>
-			</ul>
 		</div>
 		<div class="contenido" id="contenido">
 			<div class="cont-post" id="cont-post">

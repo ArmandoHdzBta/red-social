@@ -18,7 +18,7 @@ $(document).ready(function() {
 		if (data) {
 			datos = JSON.parse(data);
 			for (dato of datos){
-				$("#listAmigos").append('<li><a href="#" id="'+dato.idusuario+'">'+dato.usuario+'</a><button onclick="mensaje('+idusuario+','+dato.idusuario+')" id="btnChat">Chat</button></li>');
+				$("#listAmigos").append('<li><a href="#" id="'+dato.idusuario+'">'+dato.usuario+'</a><a id="btnChat" href="index.php?controller=Usuario&action=chat&de='+idusuario+'&para='+dato.idusuario+'">Chat</a></li>');
 				$("#nav").append('<li><a href="#">'+dato.usuario+'</a></li>');
 			}
 		}else{
@@ -26,13 +26,10 @@ $(document).ready(function() {
 		}
 
 	});
+
 });
 
-
-function mensaje(de, para) {
-	$.post('index.php?controller=Usuario&action=chat', {de: de, para: para}, function(data, textStatus) {
-
-	});
-}
-
-//href="index.php?controller=Usuario&action=chat"
+$("#btnChat").on('click', '#btnChat', function(event) {
+	event.preventDefault();
+	alert("dentro del chat");
+});

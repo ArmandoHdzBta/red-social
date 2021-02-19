@@ -6,7 +6,7 @@ $(document).ready(function() {
 			$("#cont-post").after('<div class="post" id="idpost">'+
 				'<div class="datos">'+
 					'<p><a href="#">'+dato.usuario+'</a></p>'+
-					'<a href="#"><i class="fas fa-ellipsis-v"></i></a>'+
+					'<a href="index.php?controller=Publicacion&action=eliminar&idpost='+dato.idusuario_post+'">Eliminar</a>'+
 				'</div>'+
 				'<div class="cont">'+
 					((dato.texto) ? '<p>'+dato.texto : ''+'</p>')+

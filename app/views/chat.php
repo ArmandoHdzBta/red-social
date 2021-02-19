@@ -30,17 +30,14 @@
 		<div class="contenido" id="contenido">
 			<div class="chat">
 				<div class="mensajes">
-					<div class="mensaje1">
-						<p>jhgsdjsgad</p>
-					</div>
-					<div class="mensaje2">
-						<p>jddsjhgd</p>
-					</div>
+
 				</div>
 				<div class="formChat" id="formChat">
-					<form action="">
-						<input type="text">
-						<input type="submit">
+					<form method="POST" action="index.php?controller=Chat&action=crear">
+						<input type="hidden" id="de" name="de" value="<?php echo $_SESSION['sesion'] ?>">
+						<input type="hidden" id="para" name="para" value="<?php echo $_GET['para'] ?>">
+						<input type="text" name="mensaje">
+						<input type="submit" value="Enviar">
 					</form>
 				</div>
 			</div>
@@ -62,5 +59,6 @@
 	<script src="public/js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="public/js/publicacion.js"></script>
 	<script type="text/javascript" src="public/js/usuario.js"></script>
+	<script type="text/javascript" src="public/js/mensajes.js"></script>
 </body>
 </html>

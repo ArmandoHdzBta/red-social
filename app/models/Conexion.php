@@ -4,6 +4,7 @@ namespace Model;
 
 class Conexion
 {
+	//varibale publica para poder ocuparla en cualquier lado
 	public $con;
 
 	public function __construct()

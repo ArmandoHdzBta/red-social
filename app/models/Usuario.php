@@ -73,10 +73,10 @@ class Usuario extends Conexion
 	}
 
 	static function usuario($idusuario){
+		//objeto de conexion a la base de datos
 		$conexion = new Conexion();
-
+		//sntencia SQL
 		$sql = "SELECT * FROM usuario WHERE idusuario = ?";
-
 		//se prepara la consulta parametros(conexion, consulta)
 		$pre = mysqli_prepare($conexion->con,$sql);
 		//ponemos los tipos de dato y se pasan los parametros como se pusieron en la consulta
@@ -96,7 +96,7 @@ class Usuario extends Conexion
 	static function all($idusuario){
 		//objecto pata acceder a la clase de la base de datos
 		$conexion = new Conexion();
-
+		//sentencia SQL
 		$sql = "SELECT idusuario, usuario, status FROM usuario INNER JOIN lista_amigos ON usuario.idusuario=lista_amigos.id_amigo WHERE status = 1 AND lista_amigos.id_usuario = ? OR lista_amigos.id_amigo = ?";
 
 		//se prepara la consulta parametros(conexion, consulta)
@@ -143,9 +143,13 @@ class Usuario extends Conexion
 	{
 		//objecto pata acceder a la clase de la base de datos
 		$conexion = new Conexion();
+		//sentencia SQL
 		$sql = "UPDATE usuario SET contrasennia = ? WHERE usuario = ? AND correo = ?";
+		//preparamos la consulta, pasmos los parametros de conexion y la consulta SQL
 		$pre = mysqli_prepare($conexion->con, $sql);
+		//se ponen los parametros de la consulta con su respectivo tipo de dato
 		$pre->bind_param('sss', $password,$user,$email);
+		//ejecutamos la consulta
 		$pre->execute();
 	}
 }

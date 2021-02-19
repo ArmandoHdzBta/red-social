@@ -8,9 +8,27 @@ use Model\Conexion;
 
 class ChatController
 {
-	public function crearChat()
+	//funcion para creat un mensaje
+	public function crear()
 	{
-		$char = new Chat();
-
+		$chat = new Chat();
+		$chat->de = $_POST['de'];
+		$chat->para = $_POST['para'];
+		$chat->mensaje = $_POST['mensaje'];
+		$chat->crearMensaje();
+		require 'app/views/chat.php';
+	}
+	//funcion para mostar los mensajes
+	public function todo()
+	{
+		$de = $_POST['de'];
+		$para = $_POST['para'];
+		echo json_encode(Chat::all($de,$para));
+	}
+	//funcion para borar un mensaje
+	public function borrar()
+	{
+		$idmensaje = $_POST['idmensaje'];
+		Chat::borrarMensaje($idmensaje);
 	}
 }

@@ -12,7 +12,7 @@ class UsuarioController
 {
 	function __construct()
 	{
-		if ($_GET['action'] == 'candado') {
+		if ($_GET['action'] == 'Home') {
 			if (!isset($_SESSION['sesion'])) {
 				// echo "no has iniciado sesion";
 				// return false;
@@ -112,27 +112,29 @@ class UsuarioController
 		$idusuario = $_POST['idusuario'];
 		echo json_encode(Usuario::all($idusuario));
 	}
-
+	//funcion para crear un chat
 	public function chat()
 	{
 		$chat = new Chat();
-		$chat->de = $_POST['de'];
-		$chat->de = $_POST['para'];
+		$chat->de = $_GET['de'];
+		$chat->para = $_GET['para'];
 		$chat->create();
 		require 'app/views/chat.php';
 	}
-
+	//fincion que devuele la vista si has olvidado tu password
 	public function forgotPasswordView()
 	{
 		require 'app/views/forgotPassword.php';
 	}
+	//funcion que hace la operacion de cambiar el password
 	public function forgotPassword(){
 		$usuario = $_POST['usuario'];
 		$correo = $_POST['correo'];
 		$contrasennia = $_POST['password'];
 		$password = hash("SHA256", $contrasennia);
 		$res = Usuario::cambiarContrasennia($usuario,$correo,$password);
-
+		//si se ejecuta corractamente xe devuele a iniciar secion
+		//de lo contrario en la misma pagina con un mensaje
 		if ($res) {
 			header("location: index.php?controller=Usuario&action=iniciarsesion");
 		}else{
@@ -140,16 +142,15 @@ class UsuarioController
 			require 'app/views/forgotPassword.php';
 		}
 	}
+	//funcion que nos sirve para destruir la secion
 	public function logout()
 	{
 		if (isset($_SESSION['sesion'])) {
 			unset($_SESSION['sesion']);
+			session_destroy();
 		}
+		//redireccionamos a la pagina de inicio de sesion
 		header("location: index.php?controller=Usuario&action=iniciarsesion");
-	}
-	public function candado()
-	{
-		echo "salido";
 	}
 }
 
